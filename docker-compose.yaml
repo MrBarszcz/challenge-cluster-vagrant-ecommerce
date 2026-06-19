@@ -1,0 +1,38 @@
+services:
+  mysql:
+    image: mysql:8.0
+    env_file:
+      - /vagrant/.env
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - ecommerce_net
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == master
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    env_file:
+      - /vagrant/.env
+    ports:
+      - "5672:5672"   # Porta de comunicação com o C#
+      - "15672:15672" # Porta do painel visual web
+    networks:
+      - ecommerce_net
+    deploy:
+      placement:
+        constraints:
+          - node.hostname == master
+
+# Cria uma rede global para o Swarm. 
+# O 'overlay' permite que os contentores falem entre si, mesmo estando em máquinas diferentes.
+networks:
+  ecommerce_net:
+    driver: overlay
+
+volumes:
+  mysql_data:
