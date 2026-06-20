@@ -1,0 +1,18 @@
+# Informa que estas são as regras raízes do projeto
+root = true
+
+# Aplica as regras apenas para arquivos C#
+[*.cs]
+
+# Desativa a quebra de linha antes das chaves (Estilo K&R)
+csharp_new_line_before_open_brace = none
+
+# Garante que haverá um espaço entre os parênteses e a chave: Index() {
+csharp_space_before_open_brace = method_declaration, control_blocks
+
+# Mantém o 'else' colado na chave de fechamento: } else {
+csharp_new_line_before_else = false
+
+# Garante o mesmo comportamento para blocos try/catch/finally: } catch {
+csharp_new_line_before_catch = false
+csharp_new_line_before_finally = false
