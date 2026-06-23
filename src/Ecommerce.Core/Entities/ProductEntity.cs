@@ -11,10 +11,13 @@ public class ProductEntity {
     // Propriedades de Navegação
     public CategoryEntity category { get; private set; }
 
+    public ICollection<ProductVariationEntity> variations { get; private set; }
+
     public ProductEntity(string nameIn, string descriptionIn, Guid categoryIdIn) {
         Id = Guid.NewGuid();
         name = nameIn;
         description = descriptionIn;
         categoryId = categoryIdIn;
+        variations = new List<ProductVariationEntity>();
     }
 }

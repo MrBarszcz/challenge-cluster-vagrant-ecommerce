@@ -20,5 +20,10 @@ public class ProductConfiguration : IEntityTypeConfiguration<ProductEntity> {
             .WithMany(c => c.products)
             .HasForeignKey(p => p.categoryId)
             .OnDelete(DeleteBehavior.Restrict);
+
+        builder.HasMany(p => p.variations)
+            .WithOne(v => v.product)
+            .HasForeignKey(v => v.productId)
+            .OnDelete(DeleteBehavior.Restrict);
     }
 }
