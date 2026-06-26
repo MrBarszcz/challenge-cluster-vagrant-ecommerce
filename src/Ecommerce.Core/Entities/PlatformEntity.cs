@@ -6,6 +6,8 @@ public class PlatformEntity {
 
     public ICollection<ProductVariationEntity> variations { get; private set; }
 
+    protected PlatformEntity() { }
+
     public PlatformEntity(string platformIn) {
         Id = Guid.NewGuid();
         platform = platformIn;

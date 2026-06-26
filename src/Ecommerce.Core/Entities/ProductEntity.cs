@@ -13,6 +13,8 @@ public class ProductEntity {
 
     public ICollection<ProductVariationEntity> variations { get; private set; }
 
+    protected ProductEntity() { }
+
     public ProductEntity(string nameIn, string descriptionIn, Guid categoryIdIn) {
         Id = Guid.NewGuid();
         name = nameIn;

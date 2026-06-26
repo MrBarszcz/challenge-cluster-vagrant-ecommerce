@@ -5,6 +5,8 @@ public class CategoryEntity {
 
     public ICollection<ProductEntity> products { get; private set; }
     
+    protected CategoryEntity() { }
+
     public CategoryEntity(string categoryIn) {
         Id = Guid.NewGuid();
         category = categoryIn;
