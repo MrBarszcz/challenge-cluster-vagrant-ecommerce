@@ -11,6 +11,7 @@ public class BankContext : DbContext {
     public DbSet<CategoryEntity> Categories { get; set; }
     public DbSet<PlatformEntity> Platforms { get; set; }
     public DbSet<ProductEntity> Products { get; set; }
+    public DbSet<ProductVariationEntity> ProductVariations { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder) {
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
