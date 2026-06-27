@@ -3,7 +3,6 @@ namespace Ecommerce.Core.Entities;
 public class ProductVariationEntity {
     public Guid Id { get; private set; }
     
-    // As "Cargas Úteis" (Payload)
     public decimal price { get; private set; }
     public int stockQuantity { get; private set; }
 

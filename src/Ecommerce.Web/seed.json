@@ -1,0 +1,25 @@
+{
+  "categories": ["Metroidvania", "Sandbox"],
+  "platforms": ["PC", "Nintendo Switch"],
+  "products": [
+    {
+      "name": "Hollow Knight",
+      "description": "Descubra os mistérios de Hallownest neste épico de ação e aventura em 2D.",
+      "imageUrl": "https://cdn.cloudflare.steamstatic.com/steam/apps/367520/header.jpg",
+      "categoryName": "Metroidvania",
+      "variations": [
+        { "platformName": "PC", "price": 46.99, "stock": 150 },
+        { "platformName": "Nintendo Switch", "price": 79.00, "stock": 50 }
+      ]
+    },
+    {
+      "name": "Minecraft",
+      "description": "Sobreviva e construa mundos infinitos de blocos.",
+      "imageUrl": "https://store-images.s-microsoft.com/image/apps.60323.13510798887967263.1517865c-6110-4ed2-96db-90de25f9b4c0.c3a067ed-9c71-419b-ab00-bda4118f773b",
+      "categoryName": "Sandbox",
+      "variations": [
+        { "platformName": "PC", "price": 149.90, "stock": 300 }
+      ]
+    }
+  ]
+}

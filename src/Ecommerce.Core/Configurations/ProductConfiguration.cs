@@ -15,7 +15,10 @@ public class ProductConfiguration : IEntityTypeConfiguration<ProductEntity> {
         builder.Property(p => p.description)
             .HasMaxLength(500);
 
-        // Relacionamento 1:N com a Categoria
+        builder.Property(p => p.imageUrl)
+            .IsRequired(false)
+            .HasMaxLength(300);
+
         builder.HasOne(p => p.category)
             .WithMany(c => c.products)
             .HasForeignKey(p => p.categoryId)
