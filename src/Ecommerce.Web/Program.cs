@@ -11,7 +11,7 @@ builder.Services.AddDbContext<BankContext>(options => {
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
 });
 
-
+builder.Services.AddScoped<Ecommerce.Core.Repository.IProductRepository, Ecommerce.Core.Repository.ProductRepository>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
