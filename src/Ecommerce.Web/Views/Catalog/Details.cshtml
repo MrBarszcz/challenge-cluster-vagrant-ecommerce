@@ -1,0 +1,116 @@
+@model Ecommerce.Web.ViewModels.ProductDetailsViewModel
+
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<style>
+    /* Reaproveitando a estética cyberpunk */
+    .details-container {
+        background: linear-gradient(145deg, #1a1025 0%, #160a21 100%);
+        border: 1px solid rgba(138, 43, 226, 0.2);
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .cover-img {
+        width: 100%;
+        border-radius: 8px 0 0 8px;
+        border-right: 2px solid #5a2e98;
+        object-fit: cover;
+        height: 100%;
+        min-height: 400px;
+    }
+
+    .neon-text { color: #00e6b8; }
+    .purple-text { color: #c77dff; }
+
+    /* Estilizando o Radio Button como um "Cartão de Plataforma" */
+    .variation-radio {
+        display: none; /* Esconde a bolinha padrão do navegador */
+    }
+
+    .variation-label {
+        display: block;
+        background-color: rgba(138, 43, 226, 0.1);
+        border: 1px solid rgba(138, 43, 226, 0.3);
+        border-radius: 4px;
+        padding: 15px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .variation-label:hover {
+        background-color: rgba(138, 43, 226, 0.2);
+    }
+
+    /* O que acontece quando o painel é selecionado */
+    .variation-radio:checked + .variation-label {
+        background-color: rgba(0, 230, 184, 0.1);
+        border-color: #00e6b8;
+        box-shadow: 0 0 10px rgba(0, 230, 184, 0.2);
+    }
+
+    .btn-cyber-submit {
+        background: linear-gradient(90deg, #7b2cbf 0%, #5a189a 100%);
+        color: white;
+        border: none;
+        padding: 12px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: filter 0.2s;
+        width: 100%;
+    }
+
+    .btn-cyber-submit:hover {
+        filter: brightness(1.2);
+        color: white;
+    }
+</style>
+
+<div class="container mt-5 mb-5">
+    <a asp-action="Index" class="btn btn-outline-secondary mb-4 border-0" style="color: #c77dff;">
+        <i class="bi bi-arrow-left"></i> Voltar para o Catálogo
+    </a>
+
+    <div class="row details-container g-0">
+        <div class="col-md-7">
+            <img src="@Model.ImageUrl" alt="@Model.Name" class="cover-img" />
+        </div>
+
+        <div class="col-md-5 p-4 p-lg-5 d-flex flex-column">
+            <span class="purple-text text-uppercase fw-bold" style="letter-spacing: 2px; font-size: 0.8rem;">@Model.CategoryName</span>
+            <h1 class="text-white fw-bold mb-3">@Model.Name</h1>
+            
+            <p class="text-secondary mb-4">
+                @Model.Description
+            </p>
+
+            <form asp-controller="Cart" asp-action="Add" method="post" class="mt-auto">
+                <h5 class="text-white mb-3"><i class="bi bi-disc"></i> Escolha a Edição:</h5>
+
+                @foreach (var variation in Model.Variations) {
+                    <div class="variation-option">
+                        <input type="radio" id="var_@variation.VariationId" name="VariationId" value="@variation.VariationId" class="variation-radio" required>
+                        
+                        <label for="var_@variation.VariationId" class="variation-label d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="d-block fw-bold text-white mb-1">@variation.PlatformName</span>
+                                <small class="text-secondary">Em estoque: @variation.Stock un.</small>
+                            </div>
+                            <div class="neon-text fw-bold fs-5">
+                                R$ @variation.Price.ToString("N2")
+                            </div>
+                        </label>
+                    </div>
+                }
+
+                <button type="submit" class="btn-cyber-submit mt-3 rounded">
+                    <i class="bi bi-cart-plus"></i> Adicionar ao Carrinho
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -32,4 +32,28 @@ public class CatalogController : Controller {
 
         return View(catalogCards);
     }
+
+    [HttpGet]
+    public async Task<IActionResult> Details(Guid id) {
+        var product = await _productRepository.FindById(id);
+
+        if (product == null) return NotFound();
+
+        var viewModel = new ProductDetailsViewModel {
+            ProductId = product.Id,
+            Name = product.name,
+            Description = product.description,
+            ImageUrl = product.imageUrl ?? string.Empty,
+            CategoryName = product.category?.category ?? "Sem Categoria",
+            
+            Variations = product.variations.Select(v => new VariationOptionViewModel {
+                VariationId = v.Id,
+                PlatformName = v.platform?.platform ?? "Desconhecida",
+                Price = v.price,
+                Stock = v.stockQuantity
+            }).ToList()
+        };
+
+        return View(viewModel);
+    }
 }

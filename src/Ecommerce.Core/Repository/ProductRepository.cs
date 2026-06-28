@@ -19,4 +19,13 @@ public class ProductRepository : IProductRepository {
             .AsNoTracking()
             .ToListAsync();
     }
+
+    public async Task<ProductEntity?> FindById(Guid id) {
+        return await _context.Set<ProductEntity>()
+            .Include(p => p.category)
+            .Include(p => p.variations)
+                .ThenInclude(v => v.platform)
+            .AsNoTracking()
+            .FirstOrDefaultAsync(p => p.Id == id);
+    }
 }
