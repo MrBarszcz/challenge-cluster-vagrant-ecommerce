@@ -1,0 +1,40 @@
+@model Guid
+
+@{
+    ViewData["Title"] = "Pedido Confirmado";
+}
+
+<style>
+    .success-container {
+        background: linear-gradient(145deg, #1a1025 0%, #160a21 100%);
+        border: 1px solid rgba(0, 230, 184, 0.3);
+        border-radius: 8px;
+        box-shadow: 0 10px 30px rgba(0, 230, 184, 0.1);
+    }
+
+    .icon-glow {
+        color: #00e6b8;
+        font-size: 4rem;
+        text-shadow: 0 0 20px rgba(0, 230, 184, 0.5);
+    }
+</style>
+
+<div class="container mt-5 mb-5 d-flex justify-content-center">
+    <div class="success-container p-5 text-center col-md-8 col-lg-6">
+        <i class="bi bi-check-circle-fill icon-glow mb-3"></i>
+        
+        <h2 class="text-white fw-bold mt-3">Pedido Recebido!</h2>
+        <p class="text-secondary mb-4">
+            A sua solicitação foi enviada para processamento. Em breve, o seu jogo estará disponível na sua biblioteca.
+        </p>
+        
+        <div class="p-3 mb-4 rounded" style="background-color: rgba(0,0,0,0.3); border: 1px dashed #5a2e98;">
+            <span class="d-block text-uppercase" style="font-size: 0.75rem; color: #c77dff;">Número do Pedido</span>
+            <span class="text-white fw-bold text-break" style="font-family: monospace;">@Model</span>
+        </div>
+
+        <a asp-controller="Catalog" asp-action="Index" class="btn btn-outline-light px-4 py-2">
+            Voltar para a Loja
+        </a>
+    </div>
+</div>

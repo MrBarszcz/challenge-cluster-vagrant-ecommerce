@@ -1,6 +1,8 @@
 using Ecommerce.Core.Data;
 using Microsoft.EntityFrameworkCore;
 
+DotNetEnv.Env.TraversePath().Load();
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
