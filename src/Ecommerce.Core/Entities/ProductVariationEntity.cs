@@ -21,4 +21,6 @@ public class ProductVariationEntity {
         productId = productIdIn;
         platformId = platformIdIn;
     }
+
+    
 }

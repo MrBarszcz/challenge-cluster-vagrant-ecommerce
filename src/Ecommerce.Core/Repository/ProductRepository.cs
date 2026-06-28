@@ -28,4 +28,12 @@ public class ProductRepository : IProductRepository {
             .AsNoTracking()
             .FirstOrDefaultAsync(p => p.Id == id);
     }
+
+    public async Task<ProductVariationEntity?> FindByVariationId(Guid variationId) {
+        return await _context.Set<ProductVariationEntity>()
+            .Include(v => v.product)
+            .Include(v => v.platform)
+            .AsNoTracking()
+            .FirstOrDefaultAsync(v => v.Id == variationId);
+    }
 }

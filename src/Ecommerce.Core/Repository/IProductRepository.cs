@@ -5,4 +5,5 @@ namespace Ecommerce.Core.Repository;
 public interface IProductRepository {
     Task<IEnumerable<ProductEntity>> FindAll();
     Task<ProductEntity> FindById(Guid id);
+    Task<ProductVariationEntity?> FindByVariationId(Guid variationId);
 }
